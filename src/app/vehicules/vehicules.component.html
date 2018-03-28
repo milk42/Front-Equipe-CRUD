@@ -1,0 +1,81 @@
+
+
+    <div class="boutonDiv" 
+    [ngStyle.md]="{'width.%': 80, 'height.em': 6, 'margin-left.%': 5,  'flex-direction': column}"
+    [ngStyle.sm]="{'width.%': 100, 'height.em': 10, 'margin.%': 0, 'flex-direction': column, 'margin-left.em': 0}" 
+    [ngStyle.xs]="{'width.%': 100, 'height.em': 12, 'margin.%': 0, 'flex-direction': column}"
+    >
+        <button  class="bouton" (click)="afficherAjoutComponent()"
+        [ngStyle.md]="{'width.%': 30, 'height.em': 5, 'margin-left.%': 1, 'margin.%': 1}"
+        [ngStyle.sm]="{'width.%': 80, 'height.em': 4, 'margin.%': 1, 'border-radius': 0}" 
+        [ngStyle.xs]="{'width.%': 80, 'height.em': 4, 'margin.%': 0, 'border-radius': 0}">
+          <p class="texte" fxHide.xs>Ajouter un véhicule</p>
+          <mat-icon class="icon" aria-label="Icon plus pour ajouter un véhicule" >add_circle</mat-icon>
+        </button>
+
+
+        <button  class="bouton"  (click)="afficherRechercheComponent()" 
+        [ngStyle.md]="{'width.%': 30, 'height.em': 5, 'margin-left.%': 1, 'margin.%': 1}"
+        [ngStyle.sm]="{'width.%': 80, 'height.em': 4, 'margin.%': 1, 'border-radius': 0}" 
+        [ngStyle.xs]="{'width.%': 80, 'height.em': 4, 'margin.%': 0, 'border-radius': 0}">
+          <p fxHide.xs class="texte">Recherche Avancée</p>
+          <mat-icon  class="icon" aria-label="Icon plus pour rechercher" 
+          (click)="afficherRechercheComponent()">pageview</mat-icon>
+        </button>
+    </div>
+
+<div class="container"  [ngStyle.md]="{'justify-content': center}">
+
+      <mat-card class="coteGauche"
+      [ngStyle.lg]="{'margin-top.em': 1}"
+      [ngStyle.md]="{'width.%': 80, 'height.em': 14, 'margin-left.em': 0, 'margin-bottom': 0.5}"
+      [ngStyle.sm]="{'width.%': 100, 'height.em': 14, 'margin-left.em': 0, 'margin-bottom': 0.5}" 
+      [ngStyle.xs]="{'width.%': 100, 'height.em': 14, 'margin-left.em': 0, 'margin-bottom': 0.5}">
+
+        <mat-card-title class="titre">Liste de Véhicules</mat-card-title>
+        <hr>
+          <mat-card-content>
+          
+                  <mat-list> 
+                        <mat-list-item  *ngFor="let v of vehicules"  (click)="afficherId(v)" class="itemDiv">
+                            <!-- (click)="afficherDetailComponent(v.id)" -->
+                            <!-- <mat-icon mat-list-icon>time_to_leave</mat-icon> -->
+
+                            <!-- [ngStyle.lg]="{'width.em': 30, 'height.em': 5, 'margin.em': 0}" -->
+                              <button 
+                              
+                              [ngStyle.md]="{'width.em': 50, 'height.em': 5}"
+                              [ngStyle.sm]="{'width.em': 45, 'height.em': 5}" 
+                              [ngStyle.xs]="{'width.em': 25, 'height.em': 5}" class="itemListe" >
+
+                                  <p class="paragraphe"><strong>{{v.type}}</strong> : {{v.modele}}</p>
+                                  <!-- <p> {{v.modele}} : </p>
+                                  <p>{{v.ajoute_le | date}}</p> -->
+
+                              </button > 
+
+                      </mat-list-item> 
+                  </mat-list> 
+
+          </mat-card-content> 
+          </mat-card>
+
+
+
+
+
+    <!--coté droit-->
+        <!--RouterLinkCHild sur les 3 composants : rechercheAvancée, détail, ajout-->
+          <mat-card class="coteDroit"
+          [ngStyle.md]="{'width.%': 80, 'height.%': auto, 'margin-bottom': 0.5}"
+          [ngStyle.sm]="{'width.%': 100, 'height.em': 30, 'margin-bottom': 0.5}" 
+          [ngStyle.xs]="{'width.%': 100, 'height.em': 30, 'margin-bottom': 0.5}">
+
+            <router-outlet></router-outlet>
+            
+          </mat-card>
+
+
+</div>
+
+
