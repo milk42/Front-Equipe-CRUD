@@ -1,33 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
- import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
- import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-// import {MatButtonModule, MatCheckboxModule} from '@angular/material'; déjà dans la liste d'imports
-// import { MatIconModule} from '@angular/material/icon';                déjà dans la liste d'imports
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
-
-
-
-/* import { MaterialModule } from "@angular/material";  Voir si je dois le rajouter,
- trouver sur internet en association avec le flexmodule*/
 import { FlexLayoutModule } from '@angular/flex-layout/';
 
 
-/* Sur internet encore, j'y ai vu que certains n'arrivaient pas à faire fonctionner le flexLayout et 
-les solutions apportées sont de modifier l'import :  import { FlexLayoutModule } from '@angular/flex-layout/flexbox';
- et d'ajouter dans les imports: [ MaterialModule.forRoot(), ]*/
-
-
-/* Pour créer une Popup
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-*/
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////
-// Pour le popup, des modules on été disposés dans l'exemple vu sur le net,
-// je les ajoutent ici sans avoir encore regardé quelles fonctionnalités se cachent derrière.
-// Je vais insérer ces imports et autres entre les slashs '/'
 
 import {
   MatAutocompleteModule,
@@ -101,15 +80,12 @@ import {
     MatToolbarModule,
     MatTooltipModule,
   ],
+  declarations: [],
+  providers: [],
+
 })
 export class DemoMaterialModule {}
 ///////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-// import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-
 
 
  import { AppComponent } from './app.component';
@@ -128,10 +104,11 @@ import { AppService } from './app.service';
 // import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './/app-routing.module';
 import { VAjoutComponent } from './v-ajout/v-ajout.component';
-
-
-
-
+// import { SuspectsComponent } from './suspects/suspects.component';
+// import { SuspectAjoutComponent } from './suspect-ajout/suspect-ajout.component';
+// import { SuspectRechercheAvanceeComponent } from './suspect-recherche-avancee/suspect-recherche-avancee.component';
+// import { SuspectDetailsComponent } from './suspect-details/suspect-details.component';
+import { SuspectService } from './suspect.service';
 
 
 
@@ -148,7 +125,11 @@ import { VAjoutComponent } from './v-ajout/v-ajout.component';
     BodyComponent,
     VrechercheAvanceeComponent,
     VDetailsComponent,
-    VAjoutComponent
+    VAjoutComponent,
+    // SuspectsComponent,
+    // SuspectAjoutComponent,
+    // SuspectRechercheAvanceeComponent,
+    // SuspectDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -171,13 +152,9 @@ import { VAjoutComponent } from './v-ajout/v-ajout.component';
     // Validators
 
   ],
-  providers: [AppService],
+  providers: [AppService, SuspectService],
   bootstrap: [AppComponent],
 
-  // "entryComponent" sert à forcer la lecture des composants qui ne sont pas "appelés" par une balise
-// comme on peut le faire pour le header en déposant la balise <app-header></app-header> dans le app-component.
-// Le PopupComponent est lui appelé via un autre Component (le header: méthode openDialog())
-// Pour Info, les instanciations "cachés" dans les technos sont faites via un design pattern appelé Factory
 entryComponents: [
   PopupConnexionComponent
 ]

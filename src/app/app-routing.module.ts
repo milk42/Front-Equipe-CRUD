@@ -52,6 +52,11 @@ import { BodyComponent } from './body/body.component';
 import { VrechercheAvanceeComponent } from './vrecherche-avancee/vrecherche-avancee.component';
 import { VDetailsComponent } from './v-details/v-details.component';
 import { VAjoutComponent } from './v-ajout/v-ajout.component';
+import { SuspectsComponent } from './suspects/suspects.component';
+import { SuspectRechercheAvanceeComponent } from './suspect-recherche-avancee/suspect-recherche-avancee.component';
+import { SuspectDetailsComponent } from './suspect-details/suspect-details.component';
+import { SuspectAjoutComponent } from './suspect-ajout/suspect-ajout.component';
+
 
 
 
@@ -64,7 +69,13 @@ const routes: Routes = [
     {path: 'vrecherche-avancee', component: VrechercheAvanceeComponent},
     {path: 'v-ajout', component: VAjoutComponent},
   ]},
+  // {path: 'suspects', component: SuspectsComponent, children: [
+  //   {path: 'suspect-ajout', component: SuspectAjoutComponent},
+  //   {path: 'suspect-rechercheA', component: SuspectRechercheAvanceeComponent},
+  //   {path: 'suspect-detail', component: SuspectDetailsComponent},
+  // ]},
 ];
+
   // {path: 'affaires', component: AffairesComponent},
   // {path: 'protagonistes', component: ProtagonisteComponent},
   // {path: 'armes', component: ArmesComponent},
