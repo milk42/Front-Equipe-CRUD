@@ -3,6 +3,8 @@ import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { ActivatedRouteSnapshot } from '@angular/router/src/router_state';
 import { SuspectService } from '../suspect.service';
 import { Suspect } from '../suspect';
+import { NgForm } from '@angular/forms';
+import { SuspectsComponent } from '../suspects/suspects.component';
 
 @Component({
   selector: 'app-suspect-details',
@@ -27,6 +29,7 @@ export class SuspectDetailsComponent implements OnInit {
   suspect = new Suspect(); // objet
 
   constructor(
+    private suspectComponent: SuspectsComponent,
     private route: ActivatedRoute,
     private router: Router,
     private suspectService: SuspectService,
@@ -48,26 +51,30 @@ export class SuspectDetailsComponent implements OnInit {
    }
 
 
-  //  deleteSuspect() {
-  //   this.suspectService.delete(this.suspect.id).subscribe(
-  //     () => {
-  //       this.router.navigate(['../'], {
-  //         relativeTo: this.route
-  //       });
-  //     },
-  //     err => {
-  //       console.log(err);
-  //     }
-  //   );
-  // }
+   deleteSuspect() {
+    this.suspectService.deleteSuspect(this.suspect.id).subscribe(
+      () => {
+        this.router.navigate(['../../'], {
+          relativeTo: this.route
+        });
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
 
 
-// updateSuspect(suspect: ObjetSuspect) {
-//   this.suspectService.updateSuspect(this.suspect).subscribe(
-//     () => {
-//       this.router.navigate(['/suspects'], {
-//       });
-//     },
-//   );
+updateSuspect(form: NgForm) {
+  console.log(this.suspect);
+  this.suspectService.updateSuspect(this.suspect).subscribe(
+    () => {
+      this.suspectComponent.ngOnInit();
+      this.router.navigate(['/suspect'], {
+      });
+    },
+  );
+
+}
 
 }

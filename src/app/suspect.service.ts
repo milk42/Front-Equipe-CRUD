@@ -35,18 +35,18 @@ export class SuspectService {
       .pipe(delay(500));
   }
 
-  // updateSuspect(suspect: Suspect): Observable<Suspect> {
-  //   console.log('le update fonctionne');
-  //   return this.http.put<Suspect>('http://localhost:8080/editSuspect/' +
-  //   suspect.id, suspect, httpOptions) as Observable<Suspect>;
+  updateSuspect(suspect: Suspect): Observable<Suspect> {
+    console.log('l\'appel à la méthode update fonctionne');
+    return this.http.put<Suspect>('http://localhost:8080/suspect/edit/' +
+    suspect.id, suspect, httpOptions) as Observable<Suspect>;
 
-  // }
+  }
 
-  // deleteSuspect(id: number): Observable<any> {
-  //   console.log('le delete fonctionne');
-  //   return this.http.delete<any>('http://localhost:8080/supprimeSuspect/' + id)
-  //   .pipe(delay(1000));
-  // }
+  deleteSuspect(id: number): Observable<any> {
+    console.log('le delete fonctionne');
+    return this.http.delete<any>('http://localhost:8080/suspect/delete/' + id)
+    .pipe(delay(1000));
+  }
 
 
 }

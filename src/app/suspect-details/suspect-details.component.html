@@ -10,7 +10,7 @@
         <h1>Détails d'un suspect</h1>
     </div>
 
-    <form #formCreate (ngSubmit)="onSubmit(formCreate)" class="formulaire"
+    <form #formCreate (ngSubmit)="updateSuspect(formCreate)" class="formulaire"
     [ngStyle.md]="{'width.em': 50, 'height.em': 66}"
     [ngStyle.sm]="{'width.em': 40, 'height.em': 56}" 
     [ngStyle.xs]="{'width.em': 30, 'height.em': 66}">
@@ -27,16 +27,13 @@
   
                     <!--photo-->
                     <div class="photo">
-                      <!-- <img class="image" src="{{suspect.photo}}" alt=""> -->
-                      <!-- ./../assets/image/lion.PNG -->
-                      <img class="image" src=".././assets/image/lion.PNG" alt="">
+                      <img class="image" src="{{suspect.photo}}" alt="photo du suspect {{suspect.pseudo}}">
                     </div>
                     <!--pseudo-->
                     <div class="pseudo">
                       <mat-form-field>
                           <input matInput type="text" name="pseudo" placeholder="{{suspect.pseudo}}" 
-                          [(ngModel)]="suspect.pseudo" [ngModelOptions]="{standalone: true}"> 
-                          <input matInput >
+                          [(ngModel)]="suspect.pseudo"> 
                       </mat-form-field>
                     </div>
                 </div>
@@ -49,9 +46,8 @@
 
                   <!--couleur peau-->
                   <mat-form-field class="couleurp">
-                    <mat-select placeholder="{{suspect.couleur_peau}}">
-                        <mat-option *ngFor="let cp of couleurPeau" [value]="cp.value" 
-                        [(ngModel)]="cp.viewValue" [ngModelOptions]="{standalone: true}">
+                    <mat-select placeholder="{{suspect.couleurPeau}}" name="peau" [(ngModel)]="suspect.couleurPeau">
+                        <mat-option *ngFor="let cp of couleurPeau" [value]="cp.value" >
                           {{ cp.viewValue }}
                         </mat-option>
                       </mat-select>
@@ -59,9 +55,8 @@
 
                   <!--couleur cheveux-->
                   <mat-form-field class="couleurc">
-                    <mat-select placeholder="{{suspect.couleur_cheveux}}">
-                        <mat-option *ngFor="let c of couleurCheveux" [value]="c.value" 
-                        [(ngModel)]="c.viewValue" [ngModelOptions]="{standalone: true}">
+                    <mat-select placeholder="{{suspect.couleurCheveux}}" name="cheveux"  [(ngModel)]="suspect.couleurCheveux">
+                        <mat-option *ngFor="let c of couleurCheveux" [value]="c.value" >
                           {{ c.viewValue }}
                         </mat-option>
                       </mat-select>
@@ -69,8 +64,7 @@
 
                   <!--taille-->
                   <mat-form-field class="taille">
-                    <input matInput type="text" name="pseudo" placeholder="{{suspect.taille}}" [(ngModel)]="suspect.taille"> 
-                   <input matInput >
+                    <input matInput type="text" name="taille" placeholder="{{suspect.taille}}" [(ngModel)]="suspect.taille"> 
                  </mat-form-field>
        
                 </div>
@@ -79,22 +73,23 @@
 
                   <!--signes particulier-->
                   <textarea matInput type ="text"  name="signe" placeholder="{{suspect.signe_particulier}}" 
-                  [(ngModel)]="suspect.signe_particuier" [ngModelOptions]="{standalone: true}"></textarea>
+                  [(ngModel)]="suspect.signe_particuier"></textarea>
 
 
        </div>
        <div class="ligne3">
-            <button   
+            <button 
             [ngStyle.sm]="{'width.%': 40, 'height.em': 4, 'border-radius.%': 0}" 
             [ngStyle.xs]="{'width.%': 40, 'height.em': 4, 'border-radius.%': 0}" 
             type="submit">Modifier<mat-icon>edit</mat-icon></button>
 
-            <button  
-            (click)="deleteSuspect()"
-            [ngStyle.sm]="{'width.%': 40, 'height.em': 4, 'border-radius.%': 0}" 
-            [ngStyle.xs]="{'width.%': 40, 'height.em': 4, 'border-radius.%': 0}" 
-            type="submit">Supprimer<mat-icon>delete</mat-icon></button>
+
         </div>
       </form>
+      <button  
+      (click)="deleteSuspect()"
+      [ngStyle.sm]="{'width.%': 40, 'height.em': 4, 'border-radius.%': 0}" 
+      [ngStyle.xs]="{'width.%': 40, 'height.em': 4, 'border-radius.%': 0}" 
+      >Supprimer<mat-icon>delete</mat-icon></button>
 </div>
 

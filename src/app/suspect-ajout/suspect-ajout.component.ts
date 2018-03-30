@@ -21,23 +21,29 @@ import { SuspectsComponent } from '../suspects/suspects.component';
 export class SuspectAjoutComponent implements OnInit {
 
   couleurCheveux = [
-    {value: 'blond-O', viewValue: 'Blond'},
+    {value: 'blond-0', viewValue: 'Blond'},
     {value: 'brun-1', viewValue: 'Brun'},
     {value: 'chauve-2', viewValue: 'Chauve'}
   ];
 
   couleurPeau = [
-    {value: 'blanc-O', viewValue: 'Blanc'},
+    {value: 'blanc-0', viewValue: 'Blanc'},
     {value: 'marron-1', viewValue: 'Marron'},
     {value: 'noir-2', viewValue: 'Noir'}
   ];
-
+  photos = [
+    {value: './../assets/image/site/lion.PNG', viewValue: 'Lion'},
+    {value: 'photo-1', viewValue: './../assets/image/site/hiboux.PNG'},
+    {value: 'photo-2', viewValue: './../assets/image/site/chat.PNG'},
+    {value: 'photo-3', viewValue: './../assets/image/site/suricat.PNG'}
+  ];
   // affaire: Affaire;
   suspect = new Suspect();
   editing: boolean;
 
 
   constructor(
+    private suspectComponent: SuspectsComponent,
     private suspectService: SuspectService,
     private apiService: AppService ,
     private snackBar: MatSnackBar,
@@ -52,6 +58,7 @@ export class SuspectAjoutComponent implements OnInit {
     // console.log('c\'est ici que ça va pas' + this.suspect.pseudo);
     this.suspectService.createSuspect(this.suspect)
     .subscribe( () => {
+      this.suspectComponent.ngOnInit();
       this.router.navigate(['../'], {
         relativeTo: this.route
       });

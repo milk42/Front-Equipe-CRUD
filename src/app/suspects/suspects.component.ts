@@ -36,4 +36,8 @@ afficherRechercheComponent() {
   this.router.navigate(['suspect-rechercheA'], {relativeTo: this.route});
 }
 
+// miseAjour() {
+//   this.ngOnInit();
+// }
+
 }
