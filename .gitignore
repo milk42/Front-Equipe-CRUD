@@ -6,6 +6,10 @@
 /tmp
 /out-tsc
 
+# ajout package json
+package-lock.json
+package.json
+
 # dependencies
 /node_modules
 
