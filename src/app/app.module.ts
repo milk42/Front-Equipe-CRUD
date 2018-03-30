@@ -8,6 +8,8 @@ import { FlexLayoutModule } from '@angular/flex-layout/';
 
 
 
+
+
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -104,11 +106,15 @@ import { AppService } from './app.service';
 // import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './/app-routing.module';
 import { VAjoutComponent } from './v-ajout/v-ajout.component';
-// import { SuspectsComponent } from './suspects/suspects.component';
-// import { SuspectAjoutComponent } from './suspect-ajout/suspect-ajout.component';
-// import { SuspectRechercheAvanceeComponent } from './suspect-recherche-avancee/suspect-recherche-avancee.component';
-// import { SuspectDetailsComponent } from './suspect-details/suspect-details.component';
+import { SuspectsComponent } from './suspects/suspects.component';
+import { SuspectAjoutComponent } from './suspect-ajout/suspect-ajout.component';
+import { SuspectRechercheAvanceeComponent } from './suspect-recherche-avancee/suspect-recherche-avancee.component';
+import { SuspectDetailsComponent } from './suspect-details/suspect-details.component';
 import { SuspectService } from './suspect.service';
+
+import {HttpClientModule, HttpClient} from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 
 
 
@@ -126,10 +132,10 @@ import { SuspectService } from './suspect.service';
     VrechercheAvanceeComponent,
     VDetailsComponent,
     VAjoutComponent,
-    // SuspectsComponent,
-    // SuspectAjoutComponent,
-    // SuspectRechercheAvanceeComponent,
-    // SuspectDetailsComponent
+    SuspectsComponent,
+    SuspectAjoutComponent,
+    SuspectRechercheAvanceeComponent,
+    SuspectDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -141,6 +147,8 @@ import { SuspectService } from './suspect.service';
     FlexLayoutModule,
     DemoMaterialModule,
     AppRoutingModule,
+    HttpClientModule,
+    FormsModule
     // RouterModul
     // MatDialog,
     // MatDialogRef

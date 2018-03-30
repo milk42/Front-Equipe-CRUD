@@ -26,12 +26,11 @@ export class SuspectsComponent implements OnInit {
   }
 
 afficherId(suspect) {
-  // this.router.navigate(['v-details/:id', vehicule.id]);
-  this.router.navigate(['suspect-detail', suspect.id], {relativeTo: this.route});
+  this.router.navigate(['/detail/:id', suspect.id], {relativeTo: this.route});
 }
-afficherAjoutComponent() {
-  this.router.navigate(['suspect-ajout'], {relativeTo: this.route});
-}
+// afficherAjoutComponent() {
+//   this.router.navigate(['/create'], {relativeTo: this.route});
+// }
 
 afficherRechercheComponent() {
   this.router.navigate(['suspect-rechercheA'], {relativeTo: this.route});

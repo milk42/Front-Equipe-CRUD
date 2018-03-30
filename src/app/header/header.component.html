@@ -28,8 +28,8 @@
      (click)= "selectMenu('affaires')" (click)="changeTitle('Gestion des Affaires')" routerLink="/affaires"><mat-icon>folder</mat-icon>Affaires</button> -->
 
 
-     <!-- <button mat-menu-item [matMenuTriggerFor]="protagoniste" [style.color]="appService.selectedMenu == 'protagoniste' ?'red' : 'black'"  
-     (click)= "selectMenu('protagoniste')" (click)="changeTitle('Protagonistes')"  routerLink="/protagoniste"><mat-icon>person</mat-icon>Protagonistes</button> -->
+     <button mat-menu-item [matMenuTriggerFor]="suspects" [style.color]="appService.selectedMenu == 'protagoniste' ?'red' : 'black'"  
+     (click)= "selectMenu('suspects')" (click)="changeTitle('Gestion des suspects')"  routerLink="/suspect"><mat-icon>person</mat-icon>Suspects</button>
    
 
     

@@ -69,11 +69,11 @@ const routes: Routes = [
     {path: 'vrecherche-avancee', component: VrechercheAvanceeComponent},
     {path: 'v-ajout', component: VAjoutComponent},
   ]},
-  // {path: 'suspects', component: SuspectsComponent, children: [
-  //   {path: 'suspect-ajout', component: SuspectAjoutComponent},
-  //   {path: 'suspect-rechercheA', component: SuspectRechercheAvanceeComponent},
-  //   {path: 'suspect-detail', component: SuspectDetailsComponent},
-  // ]},
+   {path: 'suspect', component: SuspectsComponent, children: [
+     {path: 'create', component: SuspectAjoutComponent},
+     {path: 'suspect-rechercheA', component: SuspectRechercheAvanceeComponent},
+     {path: 'detail/:id', component: SuspectDetailsComponent},
+   ]},
 ];
 
   // {path: 'affaires', component: AffairesComponent},

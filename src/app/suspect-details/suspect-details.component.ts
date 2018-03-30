@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { ActivatedRouteSnapshot } from '@angular/router/src/router_state';
+import { SuspectService } from '../suspect.service';
+import { Suspect } from '../suspect';
 
 @Component({
   selector: 'app-suspect-details',
@@ -9,17 +11,63 @@ import { ActivatedRouteSnapshot } from '@angular/router/src/router_state';
 })
 export class SuspectDetailsComponent implements OnInit {
 
-  public suspectId;
+  couleurCheveux = [
+    {value: 'blond-O', viewValue: 'Blond'},
+    {value: 'brun-1', viewValue: 'Brun'},
+    {value: 'chauve-2', viewValue: 'Chauve'}
+  ];
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  couleurPeau = [
+    {value: 'blanc-O', viewValue: 'Blanc'},
+    {value: 'marron-1', viewValue: 'Marron'},
+    {value: 'noir-2', viewValue: 'Noir'}
+  ];
+
+  suspectId: number;
+  suspect = new Suspect(); // objet
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private suspectService: SuspectService,
+  ) { }
 
   ngOnInit() {
 
       this.route.paramMap.subscribe((params: ParamMap) => {
         console.log( params.get('id'));
-        this.suspectId = params.get('id');
+        this.suspectId = +this.route.snapshot.paramMap.get('id');
+        // const suspectIdAsInt = parseInt(this.suspectId, 10);
+
+        this.suspectService
+        .getSuspect(this.suspectId)
+        .subscribe(
+          suspect => (this.suspect = suspect),
+       );
       });
    }
 
+
+  //  deleteSuspect() {
+  //   this.suspectService.delete(this.suspect.id).subscribe(
+  //     () => {
+  //       this.router.navigate(['../'], {
+  //         relativeTo: this.route
+  //       });
+  //     },
+  //     err => {
+  //       console.log(err);
+  //     }
+  //   );
+  // }
+
+
+// updateSuspect(suspect: ObjetSuspect) {
+//   this.suspectService.updateSuspect(this.suspect).subscribe(
+//     () => {
+//       this.router.navigate(['/suspects'], {
+//       });
+//     },
+//   );
 
 }

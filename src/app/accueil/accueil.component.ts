@@ -19,7 +19,7 @@ password: string;
   // Créer la/les variables pour manipuler les outils des modules servant à créer lun pop
   // ici on a, une variable dialog de type MatDialog.
   // On y ajoutera plus tard la variable liée au service
-  constructor( public appService: AppService, public dialog: MatDialog) { }
+  constructor(public appService: AppService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.ouvrirDialog();

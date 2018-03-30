@@ -19,34 +19,34 @@ export class SuspectService {
 
   createSuspect(suspect: Suspect): Observable<Suspect> {
     console.log('le create fonctionne');
-    return this.http.post<Suspect>(`http://localhost:8080/ajoutSuspect`, suspect);
+    return this.http.post<Suspect>(`http://localhost:8080/suspect/create`, suspect);
   }
 
 
   getSuspects(): Observable<Suspect[]> {
     console.log('le get fonctionne');
-    return this.http.get(`http://localhost:8080/suspects`) as Observable<Suspect[]>;
+    return this.http.get(`http://localhost:8080/suspect/list`) as Observable<Suspect[]>;
   }
 
   getSuspect(id: number): Observable<Suspect> {
     console.log('id' + id);
     return this.http
-      .get<Suspect>('http://localhost:8080/suspect/' + id)
-      .pipe(delay(1000));
+      .get<Suspect>('http://localhost:8080/suspect/detail/' + id)
+      .pipe(delay(500));
   }
 
-  updateSuspect(suspect: Suspect): Observable<Suspect> {
-    console.log('le update fonctionne');
-    return this.http.put<Suspect>('http://localhost:8080/editSuspect/' +
-    suspect.id, suspect, httpOptions) as Observable<Suspect>;
+  // updateSuspect(suspect: Suspect): Observable<Suspect> {
+  //   console.log('le update fonctionne');
+  //   return this.http.put<Suspect>('http://localhost:8080/editSuspect/' +
+  //   suspect.id, suspect, httpOptions) as Observable<Suspect>;
 
-  }
+  // }
 
-  deleteSuspect(id: number): Observable<any> {
-    console.log('le delete fonctionne');
-    return this.http.delete<any>('http://localhost:8080/supprimeSuspect/' + id)
-    .pipe(delay(1000));
-  }
+  // deleteSuspect(id: number): Observable<any> {
+  //   console.log('le delete fonctionne');
+  //   return this.http.delete<any>('http://localhost:8080/supprimeSuspect/' + id)
+  //   .pipe(delay(1000));
+  // }
 
 
 }

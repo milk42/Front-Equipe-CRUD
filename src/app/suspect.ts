@@ -1,6 +1,6 @@
 export class Suspect {
 
-    id?: number;
+    public id?: number;
     pseudo: string;
     photo: string;
     signeParticulier: string;

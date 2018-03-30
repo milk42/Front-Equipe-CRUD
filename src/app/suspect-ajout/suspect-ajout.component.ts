@@ -1,4 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { SuspectService } from '../suspect.service';
+import { NgForm, FormsModule } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { AppService } from '../app.service';
+import { Suspect } from '../suspect';
+import { SuspectsComponent } from '../suspects/suspects.component';
+// import { Affaire } from '../affaire';
+// import { NgModel } from '@angular/forms';
+
+
+
 
 @Component({
   selector: 'app-suspect-ajout',
@@ -7,9 +20,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SuspectAjoutComponent implements OnInit {
 
-  constructor() { }
+  couleurCheveux = [
+    {value: 'blond-O', viewValue: 'Blond'},
+    {value: 'brun-1', viewValue: 'Brun'},
+    {value: 'chauve-2', viewValue: 'Chauve'}
+  ];
+
+  couleurPeau = [
+    {value: 'blanc-O', viewValue: 'Blanc'},
+    {value: 'marron-1', viewValue: 'Marron'},
+    {value: 'noir-2', viewValue: 'Noir'}
+  ];
+
+  // affaire: Affaire;
+  suspect = new Suspect();
+  editing: boolean;
+
+
+  constructor(
+    private suspectService: SuspectService,
+    private apiService: AppService ,
+    private snackBar: MatSnackBar,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
   }
 
+  onSubmit(spt: NgForm) {
+    // console.log('c\'est ici que ça va pas' + this.suspect.pseudo);
+    this.suspectService.createSuspect(this.suspect)
+    .subscribe( () => {
+      this.router.navigate(['../'], {
+        relativeTo: this.route
+      });
+    } ); }
 }
