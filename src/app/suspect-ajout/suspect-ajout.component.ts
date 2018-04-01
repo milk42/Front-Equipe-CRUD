@@ -33,9 +33,9 @@ export class SuspectAjoutComponent implements OnInit {
   ];
   photos = [
     {value: './../assets/image/site/lion.PNG', viewValue: 'Lion'},
-    {value: 'photo-1', viewValue: './../assets/image/site/hiboux.PNG'},
-    {value: 'photo-2', viewValue: './../assets/image/site/chat.PNG'},
-    {value: 'photo-3', viewValue: './../assets/image/site/suricat.PNG'}
+    {value: './../assets/image/site/hiboux.PNG', viewValue: 'Hiboux'},
+    {value: './../assets/image/site/chat.PNG', viewValue: 'Chat'},
+    {value: './../assets/image/site/suricat.PNG', viewValue: 'Suricat'}
   ];
   // affaire: Affaire;
   suspect = new Suspect();
